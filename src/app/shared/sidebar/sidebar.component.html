@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="sidebar" [ngClass]="{'hideSideBar': isSidebarHidden}" id="sidebar">
+    <h2><img src="../../assets/Gift-Card Logo_transparent.png" alt="Gift_Card_Logo" id="sideBarLogo"></h2>
+    <nav>
+      <ul>
+        <li><a routerLink="/users">Users</a></li>
+        <li><a (click)="logout()" id="logout">Logout</a></li>
+      </ul>
+    </nav>
+    <!-- <p (click)="toggleSidebar()" id="hamburgerIcon">&#9776;</p> -->
+  </div>
+</div>

@@ -1,0 +1,93 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 373px;
+    width: 90%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+input#email,
+input#password,
+input#name {
+    padding: 10px;
+    border: none;
+    outline: none;
+    background: #E8F0FE;
+    border-radius: 9px;
+    width: 100%;
+}
+
+
+.buttonDiv {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-size: 15px;
+    height: 2rem;
+    width: 5rem;
+    background: rebeccapurple;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+.password-input {
+    position: relative;
+    background-color: #E8F0FE;
+}
+
+.password-input span {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+a {
+    transition: .6s;
+    color: blue;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+a:hover {
+    color: red;
+}

@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+}
+
+html,
+body {
+    height: 100vh;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: 'poppins';
+}
+
+/* User component mat paginator styling */
+.mat-paginator-container,
+mat-option,
+.mat-select-min-line {
+    color: black !important;
+    font-size: 13px !important;
+    font-weight: bold !important;
+}
+
+.hideSideBar {
+    width: 8px !important;
+    transition: .6s !important;
+}
+
+.hideSideBar ul {
+    display: none !important;
+}
+
+.hideSideBar #hamburgerIcon {
+    margin-left: 5px !important;
+}
+
+div.hideSideBar #hamburgerIcon {
+    margin-right: -7px !important;
+}

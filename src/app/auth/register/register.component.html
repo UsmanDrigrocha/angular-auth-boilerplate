@@ -1,0 +1,25 @@
+<div class="container">
+    <form>
+        <h1>Register</h1>
+
+        <label for="name">Enter Your name :</label>
+        <input type="text" id="name" name="name" [(ngModel)]="user.name">
+
+        <label for="email">Enter Your Email :</label>
+        <input type="email" id="email" name="email" [(ngModel)]="user.email">
+
+        <label for="password">Enter Your Password</label>
+        <div class="password-input">
+            <input type="{{ passwordFieldType }}" name="password" id="password" [(ngModel)]="user.password" required>
+            <span (click)="togglePasswordVisibility()">
+                <i [ngClass]="passwordFieldType === 'password' ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+            </span>
+        </div>
+
+        <div class="buttonDiv">
+            <button (click)="register()">Register</button>
+        </div>
+
+            <a (click)="navigate('login')">Login</a>
+    </form>
+</div>

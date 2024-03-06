@@ -14,13 +14,14 @@ export class LoginComponent implements OnInit {
     private utilityService: UtilityService,
     private authService: AuthService,
     private router: Router,
-    private location:Location
+    private location: Location
   ) {}
   ngOnInit(): void {
     const token = localStorage.getItem('token');
     if (token) {
       this.router.navigate(['/dashboard']);
     }
+    localStorage.setItem('isProfileCompleted', 'false');
   }
 
   user = {
@@ -38,18 +39,15 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.user.email, this.user.password).subscribe(
       (data: any) => {
-        if (data.status === false) {
-          return this.utilityService.showSnackbar(data.errors[0]);
-        }
-        localStorage.setItem('token', data.data.token);
+        localStorage.setItem('token', data.Token);
+        localStorage.setItem('isProfileCompleted', 'false');
         this.router.navigate(['/dashboard']);
       },
       (error: any) => {
-        return this.utilityService.showSnackbar('Error occurred while logging');
+        return this.utilityService.showSnackbar(error.error.Message);
       }
     );
   }
-
 
   // ---------------------------------------------- Password Logic ----------------------------------------------
 

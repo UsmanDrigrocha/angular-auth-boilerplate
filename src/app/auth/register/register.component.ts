@@ -14,7 +14,12 @@ export class RegisterComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.router.navigate(['/dashboard']);
+    }
+  }
 
   user = {
     name: '',

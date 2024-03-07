@@ -7,13 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  constructor(private router:Router) {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    const profileCompleted = localStorage.getItem('isProfileCompleted');
-    if (profileCompleted === 'false') {
-      console.log('Profile is not completed.');
-      this.router.navigate(['/profile'])
-    } 
-  }
+  ngOnInit(): void {}
 }

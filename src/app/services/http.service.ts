@@ -8,21 +8,13 @@ import { Observable } from 'rxjs';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
-  apiBaseUrl = 'http://localhost:3001/api/';
+  apiBaseUrl = 'http://localhost:8080/api/user/';
 
-  getUsers() {
-    return this.http.get(this.apiBaseUrl + 'admin/get-all-users');
+  getUserProfile() {
+    return this.http.get(this.apiBaseUrl + '/user-profile');
   }
 
-  getUserOrders(body: string) {
-    return this.http.post(this.apiBaseUrl + 'admin/get-user-cards', {
-      id: body,
-    });
-  }
-
-  fetchData(page: number, pageSize: number): any {
-    return this.http.get(
-      `${this.apiBaseUrl}admin/get-all-users?page=${page}&limit=${pageSize}`
-    );
+  updateProfile(data: any) {
+    return this.http.put(this.apiBaseUrl + 'user-profile', { experience:data.experience,industry:data.industry,role:data.role,projects:data.projects });
   }
 }

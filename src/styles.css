@@ -22,6 +22,8 @@ body {
 body {
     margin: 0;
     font-family: 'poppins';
+    padding-top: 5rem;
+    padding-left: 1rem;
 }
 
 /* User component mat paginator styling */

@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
     if (token) {
       this.router.navigate(['/dashboard']);
     }
-    localStorage.setItem('isProfileCompleted', 'false');
   }
 
   user = {
@@ -40,7 +39,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.user.email, this.user.password).subscribe(
       (data: any) => {
         localStorage.setItem('token', data.Token);
-        localStorage.setItem('isProfileCompleted', 'false');
         this.router.navigate(['/dashboard']);
       },
       (error: any) => {

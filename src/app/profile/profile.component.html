@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div *ngIf="userProfile">
+    <form (ngSubmit)="updateProfile()">
+        <h2>Edit Profile</h2>
+        <label>Name:</label>
+        <input type="text" name="name" [(ngModel)]="userProfile.userID.name" disabled><br>
+        <label>Email:</label>
+        <input type="email" name="email" [(ngModel)]="userProfile.userID.email" disabled><br>
+        <label>Experience:</label>
+        <input type="text" name="experience" [(ngModel)]="userProfile.experience"><br>
+        <label>Industry:</label>
+        <input type="text" name="industry" [(ngModel)]="userProfile.industry"><br>
+
+        <label for="role">Role</label>
+        <select id="role" name="role" [(ngModel)]="userProfile.role">
+            <option value="individual">Individual</option>
+            <option value="agency">Agency</option>
+        </select><br>
+
+        <h3>Projects:</h3>
+        <textarea name="projects" id="projects" cols="30" rows="10" [(ngModel)]="userProfile.projects"></textarea>
+
+        <button type="submit">Save</button>
+    </form>
+</div>

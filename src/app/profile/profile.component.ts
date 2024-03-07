@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { UtilityService } from '../services/utility.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,11 +10,10 @@ import { UtilityService } from '../services/utility.service';
 })
 export class ProfileComponent implements OnInit {
   userProfile: any;
-  editing: boolean = false;
-
   constructor(
-    private userService: HttpService,
-    private utilityService: UtilityService
+    private http: HttpService,
+    private utilityService: UtilityService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -21,26 +21,34 @@ export class ProfileComponent implements OnInit {
   }
 
   getUserProfile() {
-    this.utilityService.showSnackbar('Get Profile');
-    // this.userService.getUserProfile().subscribe((data: any) => {
-      // this.userProfile = data;
-    // });
-    this.userProfile = {
-      name:"usman",
-      experience:"19"
-    };
+    this.http.getUserProfile().subscribe(
+      (data: any) => {
+        this.userProfile = data.Profile;
+      },
+      (error: any) => {
+        console.log(error.message);
+      }
+    );
   }
 
-  editProfile() {
-    this.editing = true;
-  }
+  updateProfile(): void {
+    if (
+      !this.userProfile.projects ||
+      !this.userProfile.role ||
+      !this.userProfile.experience ||
+      !this.userProfile.industry
+    ) {
+      return this.utilityService.showSnackbar('Enter All Fields');
+    }
 
-  updateProfile() {
-    this.utilityService.showSnackbar('updating profile');
-    // this.userService.updateUserProfile(this.userProfile).subscribe(() => {
-    //   this.editing = false;
-    //   // Optionally, you can update the user profile data after successful update
-    //   // this.getUserProfile();
-    // });
+    this.http.updateProfile(this.userProfile).subscribe(
+      (data: any) => {
+        this.utilityService.showSnackbar('Profile Updated Successfully !');
+        this.router.navigate(['/dashboard']);
+      },
+      (error: any) => {
+        this.utilityService.showSnackbar('Error Updating Profile!');
+      }
+    );
   }
 }

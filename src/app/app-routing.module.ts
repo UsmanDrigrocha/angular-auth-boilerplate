@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate:[AuthGuard]
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "verify-account/:token",
+    component: AuthComponent
   },
   {
     path: '',

@@ -12,4 +12,12 @@ export class HttpService {
   login(body: any) {
     return this.http.post(`${env.backendUrl}/api/user/login`, body)
   }
+
+  register(body: any) {
+    return this.http.post(`${env.backendUrl}/api/user/register`, body)
+  }
+
+  verifyAccount(token: string): any {
+    return this.http.get(`${env.backendUrl}/api/user/verify-account/${token}`);
+  }
 }

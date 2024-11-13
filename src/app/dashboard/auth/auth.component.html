@@ -1,7 +1,7 @@
 <!-- login.component.html -->
 <div *ngIf="isLoginPage">
     <h2>Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
 
         <!-- Email Input -->
         <div>
@@ -19,8 +19,7 @@
             <!-- Error message for password -->
             <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="error">
                 <small *ngIf="loginForm.get('password')?.hasError('required')">Password is required.</small>
-                <small *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 4 characters
-                    long.</small>
+                <small *ngIf="loginForm.get('password')?.hasError('minlength')">Password must be at least 4 characters long.</small>
             </div>
         </div>
 
@@ -30,8 +29,40 @@
         </div>
     </form>
 </div>
-<!--  -->
-<div *ngIf="!isLoginPage">
-    <!-- Register form -->
+
+<!-- Register Form -->
+<div *ngIf="!isLoginPage && !showVerification">
     <h2>Register</h2>
+    <form [formGroup]="registerForm" (ngSubmit)="onRegisterSubmit()">
+
+        <!-- Email Input -->
+        <div>
+            <input type="email" placeholder="Email" formControlName="email" />
+            <!-- Error message for email -->
+            <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error">
+                <small *ngIf="registerForm.get('email')?.hasError('required')">Email is required.</small>
+                <small *ngIf="registerForm.get('email')?.hasError('email')">Please enter a valid email address.</small>
+            </div>
+        </div>
+
+        <!-- Password Input -->
+        <div>
+            <input type="password" placeholder="Password" formControlName="password" />
+            <!-- Error message for password -->
+            <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error">
+                <small *ngIf="registerForm.get('password')?.hasError('required')">Password is required.</small>
+                <small *ngIf="registerForm.get('password')?.hasError('minlength')">Password must be at least 4 characters long.</small>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div>
+            <button type="submit" [disabled]="registerForm.invalid">Register</button>
+        </div>
+    </form>
+</div>
+
+<!-- Verify Form -->
+<div *ngIf="showVerification">
+    <h1>{{verifyPageContent || "Verification Email Sent! Check your inbox/spam"}}</h1>
 </div>

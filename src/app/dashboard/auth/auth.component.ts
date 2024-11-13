@@ -57,6 +57,10 @@ export class AuthComponent {
         this.verifyPageContent = `Verifying ...`;
         this.verifyAccount();
       }
+
+      if (this.utils.isAuthenticated() && !this.token) {
+        return this.utils.navigateTo('dashboard');
+      }
     });
   }
 
